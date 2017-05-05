@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="">
+    <title>City Listing - Directory Template</title>
+    <!-- Google Font(s) -->
+    <link href="https://fonts.googleapis.com/css?family=Capriola|Roboto" rel="stylesheet">
+    <!-- Bootstrap-->
+    <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Awesome Icons Font -->
+    <link href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Listing Filter -->
+    <link href="assets/lib/bootstrap-select-master/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <!-- Lightbox -->
+    <link href="assets/lib/lightbox2-master/dist/css/lightbox.min.css" rel="stylesheet">
+    <!-- Map -->
+    <link href="assets/lib/Leaflet-1.0.2/dist/leaflet.css" rel="stylesheet">
+    <!-- City Listing Icons -->
+    <link href="assets/fonts/icons/css/import-icons.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="assets/lib/html5shiv-master/dist/html5shiv.min.js"></script>
+      <script src="assets/lib/Respond-master/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Start Body Content Wrapper -->
+    <div class="body-wrapper">
+      <!-- Start header (topbar) -->
+    <?php include 'header.php' ?>
+      <!-- End header (topbar) -->
+      <!-- Start Search Popup -->
+      <div class="search-popup container-fluid hero-header">
+        <!-- Start Header Centralizer -->
+        <div class="header-centralizer">
+          <div class="content-centralized">
+            <!-- Start Hero Search -->
+            <div class="hero-search">
+              <form>
+                <fieldset>
+                  <input type="text" class="form-control" data-placeholder="Explore and Enjoy...">
+                  <span class="typingEffect" data-title="Explore and Enjoy//Find New Places//Discover Tasty Goodies//Do Memorable Check-ins//Go Beyond and Beyond"></span>
+                </fieldset>
+                <!-- Start Search Cities -->
+                <div class="search-cities-toggle"></div>
+                <div class="search-cities">
+                  <div class="cities-list">
+                    <a href="#" style="background-image:url('assets/images/cities/thumbs/1.jpg')" data-city-id="1"><span>Boston</span></a>
+                    <a href="#" style="background-image:url('assets/images/cities/thumbs/2.jpg')" data-city-id="2"><span>Chicago</span></a>
+                    <a href="#" style="background-image:url('assets/images/cities/thumbs/3.jpg')" data-city-id="0" class="current"><span>Miami</span></a>
+                    <a href="#" style="background-image:url('assets/images/cities/thumbs/4.jpg')" data-city-id="3"><span>New Orleans</span></a>
+                    <a href="#" style="background-image:url('assets/images/cities/thumbs/5.jpg')" data-city-id="4" class="go-more-cities"><span>More Cities</span></a>
+                    <input class="chosen-city" type="hidden" name="city" value="0">
+                  </div>
+                </div>
+                <!-- End Search Cities -->
+                <div class="search-submit">
+                  <input type="submit" value=" ">
+                  <i class="hero-search-icon"></i>
+                </div>
+              </form>
+            </div>
+            <!-- End Hero Search -->
+            <!-- Start Search Categories -->
+            <div class="search-categories">
+              <div class="categories">
+                <a class="icon-platter child" href="#">Restaurant</a>
+                <a class="icon-teacup child" href="#">Café</a>
+                <a class="icon-moon" href="#">Nightlife</a>
+                <a class="icon-landscape" href="#">Outdoor</a>
+                <a class="icon-home" href="#">Lodging</a>
+                <a class="icon-car child" href="#">Car Dealer</a>
+                <a class="icon-hanger child" href="#">Clothing</a>
+                <a class="icon-bench-press child" href="#">Gim</a>
+                <a class="icon-saw child" href="#">Home Service</a>
+                <a class="icon-laundry child" href="#">Laundry</a>
+                <a class="icon-bag-dollar child" href="#">Bank</a>
+                <a class="icon-palette child" href="#">Art Gallery</a>
+                <a class="icon-library child" href="#">Bookstore</a>
+                <a class="icon-chair child" href="#">Furniture</a>
+                <a class="icon-receipt" href="#">Coupons</a>
+                <a class="icon-lan2" href="#">Online Order</a>
+                <a class="icon-paw" href="#">Pets Friendly</a>
+                <a class="icon-wheelchair" href="#">Accessible</a>
+                <a class="icon-wifi" href="#">Wi-Fi</a>
+                <a class="icon-city" href="#">More Options</a>
+              </div>
+            </div>
+            <!-- End Search Categories -->
+          </div>
+        </div>
+      </div>
+      <!-- End Search Popup -->
+      <!-- Start Login/Register Popup -->
+      <div class="login-popup container hero-header">
+        <div class="row">
+    			<div class="col-sm-12 text-center">
+    				<div class="panel panel-form">
+    					<div class="panel-heading">
+    						<div class="row">
+    							<div class="col-xs-6">
+    								<a href="#" class="active" id="login-form-link">Login</a>
+    							</div>
+    							<div class="col-xs-6">
+    								<a href="#" id="register-form-link">Register</a>
+    							</div>
+    						</div>
+    						<hr>
+    					</div>
+    					<div class="panel-body">
+    						<div class="row">
+    							<div class="col-lg-12">
+    								<form id="login-form" action="#" method="post">
+    									<div class="form-group">
+    										<input type="text" name="username" id="login-username" tabindex="1" class="form-control" placeholder="Username" value="">
+    									</div>
+    									<div class="form-group">
+    										<input type="password" name="password" id="login-password" tabindex="2" class="form-control" placeholder="Password">
+    									</div>
+    									<div class="form-group text-center">
+    										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+    										<label for="remember"> Remember Me</label>
+    									</div>
+    									<div class="form-group">
+    										<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-submit" value="Log In">
+    									</div>
+    									<div class="form-group">
+    										<div class="row">
+    											<div class="col-lg-12">
+    												<div class="text-center">
+    													<a href="#" tabindex="5" class="login-forgot-password">Forgot Password?</a>
+    												</div>
+    											</div>
+    										</div>
+    									</div>
+    								</form>
+    								<form id="register-form" action="#" method="post">
+    									<div class="form-group">
+    										<input type="text" name="username" id="register-username" tabindex="1" class="form-control" placeholder="Username" value="">
+    									</div>
+    									<div class="form-group">
+    										<input type="email" name="email" id="register-email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+    									</div>
+    									<div class="form-group">
+    										<input type="password" name="password" id="register-password" tabindex="2" class="form-control" placeholder="Password">
+    									</div>
+    									<div class="form-group">
+    										<input type="password" name="confirm-password" id="register-confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+    									</div>
+    									<div class="form-group">
+    										<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-submit" value="Register Now">
+    									</div>
+    								</form>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+      </div>
+      <!-- End Login/Register Popup -->
+      <!-- Start Review Popup -->
+      <div class="review-popup container-fluid hero-header">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+    				<div class="panel panel-form">
+              <div class="panel-heading">
+    						<div class="row">
+    							<div class="col-xs-12">
+    								<h4>Write a Review</h4>
+    							</div>
+    						</div>
+    						<hr>
+    					</div>
+    					<div class="panel-body">
+    						<div class="row">
+    							<div class="col-lg-12">
+    								<form id="review-form" class="review-form" action="#" method="post">
+    									<div class="form-group">
+    										<input type="text" name="review-title" id="review-title" tabindex="1" class="form-control" placeholder="Short Review Title" value="">
+    									</div>
+    									<div class="form-group">
+                        <textarea class="form-control" name="review-message" id="review-message" rows="8" placeholder="Describe your experience"></textarea>
+    									</div>
+                      <div class="form-group">
+                        <div class="star-rating">
+                          <fieldset>
+                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor">1 star</label>
+                          </fieldset>
+                        </div>
+                      </div>
+    									<div class="form-group">
+    										<input type="submit" name="review-submit" id="review-submit" tabindex="4" class="form-control btn btn-submit" value="Submit Review">
+    									</div>
+    								</form>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+        </div>
+      </div>
+      <!-- End Review Popup -->
+      <!-- Start Private Message Popup -->
+      <div class="pm-popup container hero-header">
+        <div class="row">
+    			<div class="col-sm-12 text-center">
+    				<div class="panel panel-form">
+              <div class="panel-heading">
+    						<div class="row">
+    							<div class="col-xs-12">
+    								<h4>Private Message</h4>
+    							</div>
+    						</div>
+    						<hr>
+    					</div>
+    					<div class="panel-body">
+    						<div class="row">
+    							<div class="col-lg-12">
+                    <!-- Start Contact Form -->
+                    <form method="post" id="pm-form" name="pm-form" class="form-horizontal contact-form pm-form user-form">
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <div class="col-sm-12 inputGroupContainer">
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  name="name" id="name" placeholder="Name" class="form-control"  required>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Text input-->
+                      <div class="form-group">
+                          <div class="col-sm-12 inputGroupContainer">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                              <input name="email" id="email" placeholder="Email (required)" class="form-control" required>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Text input-->
+                      <div class="form-group">
+                          <div class="col-sm-12 inputGroupContainer">
+                          <div class="input-group">
+                              <textarea name="message" id="message" class="form-control"
+                              placeholder="Your Message (required)" required></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Text input-->
+                      <div class="form-group">
+                          <div class="col-sm-12 inputGroupContainer">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-check"></i></span>
+                              <input name="captcha" id="captcha" placeholder="4 + 1 = ?" class="form-control" required>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Submit Button -->
+                      <div class="form-group sub">
+                        <div class="col-sm-12">
+                          <button type="submit" name="name" class="btn btn-warning submit" >SUBMIT</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- End Contact Form-->
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+      </div>
+      <!-- End Private Message Popup -->
+      <!-- Start Fixed Quick Menu -->
+      <div class="quick-menu">
+        <a href="#" class="icon-arrow-up hide-menu" title="Hide Quick Menu" data-toggle="tooltip" data-placement="right"></a>
+        <a href="#" class="icon-arrow-down hidden show-menu" title="Show Quick Menu" data-toggle="tooltip" data-placement="right"></a>
+        <a href="#" class="icon-focus gal" title="Gallery" data-toggle="tooltip" data-placement="right"></a>
+        <a href="#" class="icon-copy desc" title="Description" data-toggle="tooltip" data-placement="right"></a>
+        <a href="#" class="icon-star rev" title="Reviews" data-toggle="tooltip" data-placement="right"></a>
+        <a href="#" class="icon-map-marker mp" title="Map" data-toggle="tooltip" data-placement="right"></a>
+        <a href="#" class="icon-link rel" title="Related Listings" data-toggle="tooltip" data-placement="right"></a>
+        <a href="#" class="icon-envelope pvt" title="Private Message" data-toggle="tooltip" data-placement="right"></a>
+      </div>
+      <!-- End Fixed Quick Menu -->
+      <!-- Start Fixed Pricing Button -->
+      <a href="#" class="fixed-pricing-button">
+        <div class="ribbon">
+          <div class="pricing-data">
+            ~ $50 - $150
+          </div>
+          <div class="pricing-data-hover">
+            Make a Reservation
+          </div>
+        </div>
+      </a>
+      <!-- End Fixed Pricing Button -->
+      <!-- Start Listing Title -->
+      <div class="container-fluid listing-title">
+        <div class="breadcrumbs text-left">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Listings</a></li>
+            <li><a href="#">Boston</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Restaurants</a></li>
+          </ul>
+        </div>
+        <div class="row text-center">
+          <h2>
+            Bistro du Midi
+            <a href="#" class="listing-item-rating">4.3</a>
+            <span class="rating-count">(14)</span>
+          </h2>
+        </div>
+        <div class="pg-header-icon icon-focus"></div>
+      </div>
+      <!-- End Listing Title -->
+      <!-- Start Gallery -->
+      <div class="container-fluid gallery" id="gal">
+        <div class="gallery-item">
+          <a href="assets/images/single-listing/1.jpg" data-lightbox="gallery" data-title="Our external tables and front walls with retro aspect"></a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets/images/single-listing/2.jpg" data-lightbox="gallery" data-title="Internal tables, harmonious environment for the whole family"></a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets/images/single-listing/3.jpg" data-lightbox="gallery" data-title="Our chef preparing some delicious dinner"></a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets/images/single-listing/4.jpg" data-lightbox="gallery" data-title="Salad with fries and Sauce"></a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets/images/single-listing/5.jpg" data-lightbox="gallery" data-title="Gourmet options"></a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets/images/single-listing/6.jpg" data-lightbox="gallery" data-title="Varied menu of wines"></a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets/images/single-listing/7.jpg" data-lightbox="gallery" data-title="Special spinach salad as entry"></a>
+        </div>
+      </div>
+      <!-- End Gallery -->
+      <!-- Start Listing Description -->
+      <div class="container listing-description" id="desc">
+        <div class="pg-header-icon icon-copy"></div>
+        <div class="row">
+          <div class="col-sm-3 text-center">
+            <div class="listing-avatar">
+              <a class="verified-data" title="Verifyed Listing" data-toggle="tooltip" data-placement="right"></a>
+              <img alt="" src="assets/images/miscellaneous/demo-logo.png" class="center-block" />
+            </div>
+            <div class="claimed text-center">
+              <div class="ribbon">Claimed</div>
+            </div>
+            <div class="listing-social">
+              <div class="social-networks">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-pinterest"></a>
+              </div>
+            </div>
+            <div class="list-data">
+              <div class="list-address">
+                272 Boylston St, Boston
+              </div>
+              <div class="list-phones">
+                <div class="list-phone">
+                  123 793 644 661
+                </div>
+                <div class="list-fax">
+                  123 793 481 381
+                </div>
+                <div class="list-mobile">
+                  123 987 654 332
+                </div>
+              </div>
+              <div class="list-online-data">
+                <div class="list-email">
+                  <a href="mailto:sample@sample.com">
+                    sample@bistrodumidi.com
+                  </a>
+                </div>
+                <div class="list-website">
+                  <a href="http://bistrodumidi.com/" target="_blank">
+                    bistrodumidi.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div>
+              <div class="description-container">
+                <table class="description-text table">
+                  <tr>
+                    <td class="description">
+                      <h4 class="listing-subtitle text-left">
+                        Bistro du Midi (MARC) - Luxury in the heart of Boston
+                      </h4>
+                      <p class="capitalize-initial">
+                        The Marlon Abela Restaurant Corporation (MARC) was founded in 2001 by Chairman Marlon Abela to create a portfolio of internationally-renowned iconic destination restaurants. The focus is on provenance and making exceptional quality accessible, and is supported by the hallmark superior service, highly-acclaimed wine program and stylish décor. This ethos and Abela’s keen eye for hospitality, style, food and wine has resulted in the creation of the award-winning, unique and luxurious collection of restaurants in London’s Mayfair and the USA.
+                      </p>
+                      <p>
+                        Based in London, MARC is already an internationally recognized name in the restaurant industry: from New York’s A Voce restaurants, Morello Bistro in Greenwich, CT, and Bistro du Midi in Boston, to the Michelin-starred London restaurants Umu and The Greenhouse, plus its exclusive private members’ club Morton’s on Berkeley Square in Mayfair.
+                      </p>
+                    </td>
+                    <td class="listing-opening">
+                      <h5 class="opening-title text-left">
+                        Opening
+                      </h5>
+                      <p>Mon-Sat <span>11am-11pm</span></p>
+                      <p>Sun <span>12noon-10pm</span></p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="listing-amenities">
+                <h5 class="amenities-title text-left">
+                  Amenities
+                </h5>
+                <div class="amenities">
+                  <a href="#" class="icon-credit-card">Accepts Credit Cards</a>
+                  <a href="#" class="icon-parking">Parking</a>
+                  <a href="#" class="icon-bicycle">Bike Parking</a>
+                  <a href="#" class="icon-wheelchair">Wheelchair Accessible</a>
+                  <a href="#" class="icon-wifi">Wi-fi</a>
+                  <a href="#" class="icon-screen">Tv</a>
+                  <a href="#" class="icon-pipe">Smoking Allowed</a>
+                  <a href="#" class="icon-accessibility">Special</a>
+                  <a href="#" class="icon-alarm-ringing">Balcony</a>
+                  <a href="#" class="icon-calendar-insert">Reservations</a>
+                  <a href="#" class="icon-glass">Alcohol</a>
+                </div>
+              </div>
+              <div class="listing-amenities">
+                <h5 class="amenities-title text-left">
+                  Target Audience
+                </h5>
+                <div class="amenities">
+                  <a href="#" class="icon-man">Solo</a>
+                  <a href="#" class="icon-users2">Couple</a>
+                  <a href="#" class="icon-users">Families</a>
+                  <a href="#" class="icon-group-work">Friends</a>
+                  <a href="#" class="icon-cake">Parties</a>
+                  <a href="#" class="icon-tie">Business</a>
+                </div>
+              </div>
+              <div class="listing-amenities">
+                <h5 class="amenities-title text-left">
+                  Tags
+                </h5>
+                <div class="amenities tags">
+                  <a href="#">Lunch</a>
+                  <a href="#">Breakfast</a>
+                  <a href="#">Bar</a>
+                  <a href="#">Pub</a>
+                  <a href="#">Drinks</a>
+                  <a href="#">Wine</a>
+                  <a href="#">Dinner</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Listing Description -->
+      <!-- Start Review -->
+      <div class="container listing-review" id="rev">
+        <div class="pg-header-icon icon-star"></div>
+        <div class="row">
+          <div class="col-sm-3 text-center">
+            <div class="average-review">
+              <div class="mood-icon icon-happy"></div>
+              <div class="rating">4.3</div>
+              <div class="stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+              </div>
+              <div class="review-stats">
+                <div class="review-counter">14</div>
+                <div>Reviews</div>
+              </div>
+              <img alt="" src="assets/images/miscellaneous/review-background-mask.png" />
+            </div>
+            <div class="review-reputation text-center">
+              <div>
+                <h4>Excellent</h4>
+              </div>
+            </div>
+            <div class="write-review">
+              <a href="#" class="button">
+                Write a Review
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <!-- Start Review Author Block -->
+            <div class="row author-block">
+              <div class="col-sm-12 text-left">
+                <a href="#" class="author-avatar pull-left" style="background-image: url(assets/images/users/1.jpg)">
+                  <div class="author-stats">
+                    <div class="post-counter">14</div>
+                    <div>Reviews</div>
+                  </div>
+                </a>
+                <a href="#" class="author-name">John Doe</a>
+                <div class="author-vote-mood icon-happy"></div>
+                <div class="author-vote">
+                  Excellent
+                  <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <span class="data icon-calendar-full">05/02/2017</span>
+                <div class="clear"></div>
+                <div class="author-title">
+                  Excellent quiet spot for business or meeting a friend
+                </div>
+                <div class="author-description">
+                  The food is excellent. The service is quite good, and the atmosphere is quiet and enjoyable. This is always a place that you can count on for a good meal... of course I wish the portions were larger... but that is a very minor issue, kudos to the service, the meal, and the ambience.
+                </div>
+              </div>
+            </div>
+            <!-- End Review Author Block -->
+            <!-- Start Review Author Block -->
+            <div class="row author-block">
+              <div class="col-sm-12 text-left">
+                <a href="#" class="author-avatar pull-left" style="background-image: url(assets/images/users/2.jpg)">
+                  <div class="author-stats">
+                    <div class="post-counter">14</div>
+                    <div>Reviews</div>
+                  </div>
+                </a>
+                <a href="#" class="author-name">Maria Doe</a>
+                <div class="author-vote-mood icon-smile"></div>
+                <div class="author-vote">
+                  Good
+                  <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                  </div>
+                </div>
+                <span class="data icon-calendar-full">05/02/2017</span>
+                <div class="clear"></div>
+                <div class="author-title">
+                  Overpriced but pretty and food fine
+                </div>
+                <div class="author-description">
+                  We have eaten on the Bistro a couple of times. The service, food and view are good to very good. Nothing will blow your socks off, but they don't usually disappoint either. Wine list very expensive (AKA overpriced).
+                </div>
+              </div>
+            </div>
+            <!-- End Review Author Block -->
+            <!-- Start Review Author Block -->
+            <div class="row author-block">
+              <div class="col-sm-12 text-left">
+                <a href="#" class="author-avatar pull-left" style="background-image: url(assets/images/users/3.jpg)">
+                  <div class="author-stats">
+                    <div class="post-counter">14</div>
+                    <div>Reviews</div>
+                  </div>
+                </a>
+                <a href="#" class="author-name">Paul Doe</a>
+                <div class="author-vote-mood icon-neutral"></div>
+                <div class="author-vote">
+                  Regular
+                  <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                  </div>
+                </div>
+                <span class="data icon-calendar-full">05/02/2017</span>
+                <div class="clear"></div>
+                <div class="author-title">
+                  Almost perfect birthday dinner
+                </div>
+                <div class="author-description">
+                  We loved our bay window-side table, and the overall ambiance of the restaurant was elegant, relaxed and warm. Our food was delicious. Roast brussel sprouts with mushrooms and balsamic over a chickpea spread was savory and rich.
+                </div>
+              </div>
+            </div>
+            <!-- End Review Author Block -->
+            <!-- Start Review Author Block -->
+            <div class="row author-block">
+              <div class="col-sm-12 text-left">
+                <a href="#" class="author-avatar pull-left" style="background-image: url(assets/images/users/4.jpg)">
+                  <div class="author-stats">
+                    <div class="post-counter">14</div>
+                    <div>Reviews</div>
+                  </div>
+                </a>
+                <a href="#" class="author-name">Joane Doe</a>
+                <div class="author-vote-mood icon-wondering"></div>
+                <div class="author-vote">
+                  Not Good
+                  <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                  </div>
+                </div>
+                <span class="data icon-calendar-full">05/02/2017</span>
+                <div class="clear"></div>
+                <div class="author-title">
+                  Good products but non imaginative cuisine. The claimed french touch is discrete
+                </div>
+                <div class="author-description">
+                  Setting is OK. Seating is comfortable and not packed. The wine list is impressive Good products but non imaginative cuisine. The claimed french touch is discrete. Fish was correctly cooked. The catastrophy came with the dessert. My soufflé was served flat!. This is inacceptable in such a place. The manager excuses were as flat as the soufflé. Not professional!
+                </div>
+              </div>
+            </div>
+            <!-- End Review Author Block -->
+            <!-- Start Review Author Block -->
+            <div class="row author-block">
+              <div class="col-sm-12 text-left">
+                <a href="#" class="author-avatar pull-left" style="background-image: url(assets/images/users/5.jpg)">
+                  <div class="author-stats">
+                    <div class="post-counter">14</div>
+                    <div>Reviews</div>
+                  </div>
+                </a>
+                <a href="#" class="author-name">Lynda Doe</a>
+                <div class="author-vote-mood icon-mad"></div>
+                <div class="author-vote">
+                  Bad
+                  <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                  </div>
+                </div>
+                <span class="data icon-calendar-full">05/02/2017</span>
+                <div class="clear"></div>
+                <div class="author-title">
+                  Disappointing and Expensive Dinner
+                </div>
+                <div class="author-description">
+                  I want to preface this review by saying that our waiter Jonathan and the maitre were very nice and tried hard, but they were not in the kitchen and that is where the problems lay. I also want to say that I rarely write such poor reviews but this was a terrible meal.
+                </div>
+              </div>
+            </div>
+            <!-- End Review Author Block -->
+          </div>
+        </div>
+        <div class="more-listing icon-plus" title="More Reviews" data-toggle="tooltip" data-placement="top"></div>
+      </div>
+      <!-- End Review -->
+      <!-- Start Map -->
+      <div class="container-fluid listing-map" id="mp">
+        <div class="pg-header-icon icon-map-marker"></div>
+        <div id="map"></div>
+      </div>
+      <!-- End Map -->
+      <!-- Start Related Listings -->
+      <div class="container-fluid listing-block related" id="rel">
+        <div class="pg-header-icon icon-link"></div>
+        <h2>Related Listings</h2>
+        <div class="row listing white">
+          <!-- Start Listing Item Col -->
+          <div class="col-sm-3">
+            <div class="listing-item">
+              <a href="#" class="category-icon icon-dinner"></a>
+              <div class="listing-item-rating">4.9</div>
+              <a href="#" class="listing-item-link">
+                <div class="listing-item-title-centralizer">
+                  <div class="listing-item-title">
+                    Area Four
+                    <div class="ribbon">~ $18-$90</div>
+                  </div>
+                </div>
+                <img alt="" src="assets/images/listings/1.jpg" />
+              </a>
+              <div class="listing-item-data">
+                <a class="listing-item-address" href="#">
+                  Troy South End, 264 E. Berkley St, Boston
+                </a>
+                <div class="listing-item-excerpt">
+                  Excellent wood-fired pizzas, salads, and croissants
+                </div>
+              </div>
+              <div class="listing-category-name">
+                <a href="#">Restaurant</a>
+              </div>
+            </div>
+          </div>
+          <!-- End Listing Item Col -->
+          <!-- Start Listing Item Col -->
+          <div class="col-sm-3">
+            <div class="listing-item">
+              <a href="#" class="category-icon icon-dinner"></a>
+              <div class="listing-item-rating">4.2</div>
+              <a href="#" class="listing-item-link">
+                <div class="listing-item-title-centralizer">
+                  <div class="listing-item-title">
+                    Big Jones
+                  </div>
+                </div>
+                <img alt="" src="assets/images/listings/2.jpg" />
+              </a>
+              <div class="listing-item-data">
+                <a class="listing-item-address" href="#">
+                  5347 N Clark St, Chicago, IL
+                </a>
+                <div class="listing-item-excerpt">
+                   Best fried chicken of the town
+                </div>
+              </div>
+              <div class="listing-category-name">
+                <a href="#">Restaurant</a>
+              </div>
+            </div>
+          </div>
+          <!-- End Listing Item Col -->
+          <!-- Start Listing Item Col -->
+          <div class="col-sm-3">
+            <div class="listing-item">
+              <a href="#" class="category-icon icon-dinner"></a>
+              <div class="listing-item-rating">4.6</div>
+              <a href="#" class="listing-item-link">
+                <div class="listing-item-title-centralizer">
+                  <div class="listing-item-title">
+                    Shuckers
+                    <div class="ribbon">Special Menu for Kids</div>
+                  </div>
+                </div>
+                <img alt="" src="assets/images/listings/3.jpg" />
+              </a>
+              <div class="listing-item-data">
+                <a class="listing-item-address" href="#">
+                  1819 79th Street Causeway, Miami, FL
+                </a>
+                <div class="listing-item-excerpt">
+                  Grill Best Affordable Waterfront Dining
+                </div>
+              </div>
+              <div class="listing-category-name">
+                <a href="#">Restaurant</a>
+              </div>
+            </div>
+          </div>
+          <!-- End Listing Item Col -->
+          <div class="col-sm-3">
+            <div class="listing-item">
+              <a href="#" class="category-icon icon-dinner"></a>
+              <div class="listing-item-rating">4.6</div>
+              <a href="#" class="listing-item-link">
+                <div class="listing-item-title-centralizer">
+                  <div class="listing-item-title">
+                    St Roch Market
+                    <div class="ribbon">Starts from $29</div>
+                  </div>
+                </div>
+                <img alt="" src="assets/images/listings/4.jpg" />
+              </a>
+              <div class="listing-item-data">
+                <a class="listing-item-address" href="#">
+                  2381 Saint Claude Ave, New Orleans, LA
+                </a>
+                <div class="listing-item-excerpt">
+                  Breakfast to dinner, affordable price point
+                </div>
+              </div>
+              <div class="listing-category-name">
+                <a href="#">Restaurant</a>
+              </div>
+            </div>
+          </div>
+          <!-- End Listing Item Col -->
+        </div>
+        <div class="more-listing icon-plus" title="More Related Listings" data-toggle="tooltip" data-placement="top"></div>
+      </div>
+      <!-- End Related Listing -->
+      <!-- Start Footer -->
+      <footer>
+        <div class="row footer-info">
+          <div class="footer-col footer-terms">
+            <a href="#">Terms of Use</a>
+          </div>
+          <div class="footer-col footer-privacy">
+            <a href="#">Privacy Policy</a>
+          </div>
+          <div class="footer-col social-networks">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-pinterest"></a>
+          </div>
+          <div class="footer-col footer-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#" class="sign-in">Sign In</a>
+            <a href="#">Pricing</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="footer-col footer-contact">
+            <div class="footer-address">
+              Your Business Address Here
+            </div>
+            <div class="footer-contact-data">
+              (99) 989-745-9922
+            </div>
+          </div>
+        </div>
+        <div class="row footer-logo">
+          <a href="#">
+            <img alt="" src="assets/images/logo.png"/>
+          </a>
+        </div>
+        <div class="row footer-credits">
+          <div class="copyright">
+            (C) 2017 Your Company, All right reserved
+          </div>
+        </div>
+      </footer>
+      <!-- End Footer -->
+    </div>
+    <!-- End Body Content Wrapper -->
+    <!-- jQuery -->
+    <script src="assets/lib/jquery.min.js"></script>
+    <script src="assets/lib/jquery-ui.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Lightbox -->
+    <script src="assets/lib/lightbox2-master/dist/js/lightbox.min.js"></script>
+    <!-- Typing Effect -->
+    <script src="assets/lib/typed.js-master/dist/typed.min.js"></script>
+    <!-- Dragging Scroll to Listing Gallery -->
+    <script src="assets/lib/jquery.dragscroll.js"></script>
+    <!-- Horizontal Mousewheel Scroll to Listing Gallery -->
+    <script src="assets/lib/jquery-mousewheel-master/jquery.mousewheel.min.js"></script>
+    <!-- Listing Filter -->
+    <script src="assets/lib/bootstrap-select-master/js/bootstrap-select.js"></script>
+    <!-- To Self Hosted Hero Video -->
+    <script src="assets/lib/bideo.js-master/bideo.js"></script>
+    <!-- Map -->
+    <script src="assets/lib/Leaflet-1.0.2/build/deps.js"></script>
+  	<script src="assets/lib/Leaflet-1.0.2/debug/leaflet-include.js"></script>
+    <script src="assets/js/map-markers-samples/sampleMapSingleListingMarker.js"></script>
+    <!-- Main Javascript -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

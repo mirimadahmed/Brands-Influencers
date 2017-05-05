@@ -1,0 +1,52 @@
+
+LEIAME
+
+Please notice that this optimization is optional but strongly recommended.
+
+The sample files of this folder (index-image-pagespeed.html and index-image-pagespeed.min.html) demonstrates how to use parser.js (production: parser.min.js) to achieve the highest pagespeed performance on:
+
+Google Insigts
+developers.google.com/speed/pagespeed/insights
+
+GTMetrix
+gtmetrix.com
+
+Pingdom
+tools.pingdom.com
+
+Web Page Test
+webpagetest.org
+
+===============================================
+
+Comprove The Performance
+
+- Upload all files of your pack to the server
+- Upload the file index-image-pagespeed.min.html (located on this folder) to the same directory of all other HTML files
+- Do a backup of the .htaccess file of your site (if you have one) 
+- Upload the assets/htaccess/htaccess.txt file to the root folder of your site and rename it to .htaccess
+- If you use a CDN, clean the cache
+- Verify if you can access any of the HTML files of the templace on your browser (sample: http://www.yourserver.com/index.html)
+- Access any of the Pagespeed tools listed above
+- Copy the full URL address of index-image-pagespeed.min.html on your server and paste it on the input field located on the pagespeed sites
+
+Your URL must be as follow (sample structure)
+
+If you are uploading the files to the root folder of your domain:
+http://your-domain.com/index-image-pagespeed.min.html
+
+If you are uploading the files to a subdomain:
+http://your-subdomain.your-domain.com/index-image-pagespeed.min.html
+
+If you use https:
+https://your-domain.com/index-image-pagespeed.min.html
+
+==============================================
+
+If you are using a CDN, like Cloudflare (it's free), your performance will be similar to ours, maybe better. The difference will depend exclusively of your server response.
+
+==============================================
+
+Or, you can test the performance with our URL:
+
+http://webdesigntrade.net/city-listing/index-image-pagespeed.min.html
